@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="filmdb@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="filmdb">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="db_utilisateur"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="persondb"/>
+    <schema id="8" parent="1" name="sys"/>
+    <table id="9" parent="2" name="acteur"/>
+    <table id="10" parent="2" name="film"/>
+    <table id="11" parent="2" name="film_sec_acteur"/>
+    <table id="12" parent="2" name="users"/>
+    <column id="13" parent="9" name="idActeur">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="14" parent="9" name="NOM">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="15" parent="9" name="PRENOM">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="16" parent="9" name="PRIMARY">
+      <ColNames>idActeur</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="17" parent="10" name="idFilm">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="10" name="TITRE">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="19" parent="10" name="TYPE">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="20" parent="10" name="ACTEUR_PRIN_ID">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="21" parent="10" name="nbrExemplaire">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="22" parent="10" name="fk_Film_Acteur1_idx">
+      <ColNames>ACTEUR_PRIN_ID</ColNames>
+    </index>
+    <key id="23" parent="10" name="PRIMARY">
+      <ColNames>idFilm</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="24" parent="10" name="fk_Film_Acteur1">
+      <ColNames>ACTEUR_PRIN_ID</ColNames>
+      <RefSchemaName>filmdb</RefSchemaName>
+      <RefTableName>acteur</RefTableName>
+      <RefColNames>idActeur</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="25" parent="11" name="Film_idFilm">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="11" name="Acteur_idActeur">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="27" parent="11" name="fk_Film_has_Acteur_Acteur1_idx">
+      <ColNames>Acteur_idActeur</ColNames>
+    </index>
+    <index id="28" parent="11" name="fk_Film_has_Acteur_Film1_idx">
+      <ColNames>Film_idFilm</ColNames>
+    </index>
+    <key id="29" parent="11" name="PRIMARY">
+      <ColNames>Film_idFilm
+Acteur_idActeur</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="30" parent="11" name="fk_Film_has_Acteur_Film1">
+      <ColNames>Film_idFilm</ColNames>
+      <RefSchemaName>filmdb</RefSchemaName>
+      <RefTableName>film</RefTableName>
+      <RefColNames>idFilm</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <foreign-key id="31" parent="11" name="fk_Film_has_Acteur_Acteur1">
+      <ColNames>Acteur_idActeur</ColNames>
+      <RefSchemaName>filmdb</RefSchemaName>
+      <RefTableName>acteur</RefTableName>
+      <RefColNames>idActeur</RefColNames>
+      <OnUpdate>no-action</OnUpdate>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="32" parent="12" name="id_User">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="12" name="login">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="34" parent="12" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="35" parent="12" name="PRIMARY">
+      <ColNames>id_User</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
